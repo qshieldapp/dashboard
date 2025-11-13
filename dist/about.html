@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QShield - ABOUT</title>
+    <link rel="shortcut icon" href="img/logo.png">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">QShield</div>
+            <div class="menu-toggle" id="mobile-menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul class="nav-center">
+                <li><a href="./">Home</a></li>
+                <li><a href="about.html"  class="active">About</a></li>
+                <li><a href="docs.html">Docs</a></li>
+                <li><a href="faqs.html">FAQ</a></li>
+                <li><a href="plans.html" class="btn">Get Started</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="content">
+        <h1>About QShield</h1>
+        <p>QShield is being developed and maintained by a team of experienced engineers, researchers, and developers with a combined experience in the field spanning over 40 years. With projects in AI, Blockchain Technology, Web 5, and Cryptography, the team continues to keep itself up-to-date with the most modern technology, and has positioned itself well to implement efficiently, effectively, and ethically the technologies of tomorrow. </p>
+        <p> In the field of quantum-resistant cryptography, QShield Labs, being dedicated to protecting digital assets and sensitive data of clients in the post-quantum era, have developed QShield, a SaaS based application that is lightweight and secure. QShield does NOT save player data for the games it supports on its servers, and only keeps track of the encryption and security aspect, and does not require sensitive decrypted client data to function. The "master password" our clients choose while creating their accounts on QShield is the only possible medium of decoding our encryption, and no one else, including the QShield Team themselves can circumvent past that encryption layer. Our mission is to deliver robust, scalable, and user-friendly security solutions for games of all sizes: small teams, budding startups, multimillion valuation game companies, and everyone in between.</p>
+        <p>The detailed explanation for what we do is available in the <a href="faqs.html">FAQs</a> section.</p>
+    </section>
+
+    <footer>
+        <p>QShield Labs &copy; 2025</p>
+    </footer>
+    <script>
+        document.getElementById("mobile-menu").addEventListener("click", function () {
+            document.querySelector(".nav-center").classList.toggle("nav-active");
+        });
+    </script>
+    <script src="index.js"></script>
+</body>
+</html>

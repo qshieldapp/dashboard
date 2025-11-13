@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QShield - FAQ</title>
+    <link rel="shortcut icon" href="img/logo.png">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">QShield</div>
+            <div class="menu-toggle" id="mobile-menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul class="nav-center">
+                <li><a href="./">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="docs.html">Docs</a></li>
+                <li><a href="faqs.html"  class="active">FAQ</a></li>
+                <li><a href="plans.html" class="btn">Get Started</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="content">
+        <h1>Frequently Asked Questions</h1>
+        <div class="faq-item">
+            <h3>What exactly is QSield?</h3>
+            <p>QShield is an infrastructure project built to support trustless score entry for Web 3 games. Focusing primarily on the Beam Protocol, QShield converts the address of the user calling the SubmitScore() function to a Quantum Resistant code so that improper scores (for example those entered by malicious users who directly call the smart contract) can be flagged since the codes they would carry would not meet the cipher standards set by QShield intrinsically.</p>
+        </div>
+        <div class="faq-item">
+            <h3>What are quantum computers anyway?</h3>
+            <p>A quantum computer is a type of computer that performs calculations and operations using principles of Quantum Mechanics, as opposed to traditional computers. Unlike the tradtional computers that use bits (0 and 1), they use Qubits or Quantum Bits. Qubits can have multiple values at the same time, a principle commonly postulated in Quantum Mechanics. As a result, they facilitate parallel processing, thereby lowering the time for simultaneous operations. They are also interconnected with each other via Entanglement, making the integration of bottom-up complex calculations a lot faster.</p>
+        </div>
+        <div class="faq-item">
+            <h3>What is quantum-resistant cryptography?</h3>
+            <p>It is a set of cryptographic algorithms designed to remain secure against attacks from quantum computers.</p>
+        </div>
+        <div class="faq-item">
+            <h3>How does QShield ensure the codes are secure?</h3>
+            <p>QShield uses NIST-approved post-quantum algorithms and real-time monitoring to ensure robust security. Taking the threat of Quantum Computing very seriously, QuantumSure uses multilayered algorithms, integrating Fernet-like cryptography, Kyber 1024, and decoy keys to ensure the client data is ready to stand to the test of hacking and malicious actors in a post-quantum world. This makes it functionally impossible for unauthorized parties to crack the code pattern for score submission for your game.</p>
+        </div>
+        <div class="faq-item">
+            <h3>Can I integrate QShield with my game?</h3>
+            <p>Please got to the Get Started section and generate your API Key and other details. Next, fill out the form to apply register your API Key and site url so that we can flag all other request sources for extra protection. We usually get back within 3 working days.</p>
+        <div class="faq-item">
+            <h3>Do I need to share my sensitive data for this?</h3>
+            <p>NO. QShield works by encrypting publicly available data, meaning it will NEVER ask you for any confidential information.</p>
+
+        <div class="faq-item">
+            <h3>What format of requests does QShield expect?</h3>
+            <p>QShield requires the address of the one submitting the score. That's it! The exact tutorial can be viewed in <a href="docs.html">documentation</a>.</p>
+        </div>
+        <div class="faq-item">
+            <h3>What is the pricing like?</h3>
+            <p>QShield is currently giving away free trials with up to 10000 requests. Please try the free service and then reach out to the team for upgrading to a permanent plan which comes in tiers ($9.99, $19.99, $49.99, $99.99) depending on the requirements.</p>
+        </div>
+        <div class="faq-item">
+            <h3>Sounds good, where can I sign up?</h3>
+            <p>Please go to <a href="service.html">Plans</a> and create your credentials. Then mail us at <a href="mailto:qshieldapp@gmail.com">this address</a> to activate your account.</p>
+        </div>
+
+        </div>
+        </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>Resurgence Labs &copy; 2025</p>
+    </footer>
+
+    <script>
+        document.getElementById("mobile-menu").addEventListener("click", function () {
+            document.querySelector(".nav-center").classList.toggle("nav-active");
+        });
+    </script>
+    <script src="index.js"></script>
+</body>
+</html>
