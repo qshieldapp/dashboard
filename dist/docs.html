@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QShield - DOCS</title>
+    <link rel="shortcut icon" href="img/logo.png">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">QShield</div>
+            <div class="menu-toggle" id="mobile-menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul class="nav-center">
+                <li><a href="./">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="docs.html"   class="active">Docs</a></li>
+                <li><a href="faqs.html">FAQ</a></li>
+                <li><a href="plans.html" class="btn">Get Started</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="content">
+        <h1>QShield Documentation</h1>
+        <p>Get started with our API and integration guides. Explore our comprehensive resources to implement quantum-resistant cryptography in your Game smart contracts.</p>
+        <ul>
+            <li><a onclick="location.href='#integration'">Integration Guide</a></li>
+            <li><a onclick="location.href='#bestpractices'">Best Security Practices</a></li>
+            <li><a onclick="location.href='#tech'">QShield Encryption at a Glance</a></li>
+        </ul>
+
+        <div style="font-size: 1.8em; color: #00ff88" id="integration">Integration Guide</div>
+        <div style="font-size: 1.4em; color: #00ff88">Creating an Account</div>
+        <p>Currently we are providing a free sample in <a href="plans.html" style="cursor: pointer;">plans</a>. Please click on 'create account' after choosing a Secret Phrase and a Master Password. Safely store them both on a piece of paper or a vault service, and also save your api key. If you lose these, your data can NEVER be recovered.</p>
+
+        <div style="font-size: 1.4em; color: #00ff88">Registering Your Account</div>
+        <p>Go to the form and fill it up with the EXACT details asked and press send. We usually get back to you within 3 days.</p>
+        <div style="font-size: 1.4em; color: #00ff88">Have a Compatible Smart Contract</div>
+        <p>If you store user scores in your Smart Contract as a mapping that is (address => uint), add a similar one for (string => uint). This is what we will have the users populate while submitting their scores.</p>
+        <div style="font-size: 1.4em; color: #00ff88">Add to Your Frontend</div>
+        <p>Please make sure you store and retrieve your API Key and Master Password for this securely. Add this code snippet to your SubmitScore() frontend function.</p>
+        <div style="font-size: 1.4em; color: #00ff88">Verifying Score Authenticity</div>
+        <p>Once it's time to declare a winner, please use our decrypt function for any candidate to reveal if the score entry is authentic.</p>
+
+        <div style="font-size: 1.8em; color: #00ff88" id="bestpractices">Best Security Practices</div>
+        <p>Please DO NOT share your master password, api key, or other details with anyone, because that would allow them to delete your account, and reverse engineer your encryption giving them the ability to create entries that align with your code without actually playing your game and registering "authentic" scores.</p>
+
+        <div style="font-size: 1.8em; color: #00ff88" id="tech">QShield Encryption at a Glance</div>
+        <p>QShield using multiple encryption algorithms, and decoy mechanics to ensure the safety of your data, and its resistance to hacking and unauthorized access, even when pitted against Quantum Computers. The technology involves Kyber1024, Fernet-like, and decoy based encryption.</p>
+        <p><a>Kyber 1024:</a> Kyber is an IND-CCA2-secure key encapsulation mechanism (KEM)<a style="cursor: pointer;" onclick="to_kyber();">[1]</a>, whose security is based on the hardness of solving the learning-with-errors (LWE) problem over module lattices. Kyber is one of the finalists in the NIST post-quantum cryptography project. The submission lists three different parameter sets aiming at different security levels. Specifically, Kyber-512 aims at security roughly equivalent to AES-128, Kyber-768 aims at security roughly equivalent to AES-192, and Kyber-1024 aims at security roughly equivalent to AES-256.<br/>
+        The design of the Kyber encryption is rooted in the seminal LWE-based encryption scheme of Regev. Since Regev's original work, the practical efficiency of LWE encryption schemes has been improved by observing that the secret in LWE can come from the same distribution as the noise and also noticing that "LWE-like" schemes can be built by using a square (rather than a rectangular) matrix as the public key. Another improvement was applying an idea originally used in the NTRU cryptosystem to define the Ring-LWE and Module-LWE problems that used polynomial rings rather than integers. The CCA-secure KEM Kyber is built on top of a CPA-secure cryptosystem that is based on the hardness of Module-LWE.
+        </p>
+        <p><a>Fernet-like Encryption:</a> Fernet guarantees that a message encrypted using it cannot be manipulated or read without the key. Fernet is an implementation of symmetric (also known as “secret key”) authenticated cryptography. Fernet also has support for implementing key rotation via MultiFernet. <a style="cursor: pointer;" onclick="to_fernet();">[2]</a> <br/>
+        It uses the following processes internally: <br/>
+        -AES in CBC mode with a 128-bit key for encryption; using PKCS7 padding.<br/>
+        -HMAC using SHA256 for authentication.<br/>
+        -Initialization vectors are generated using random number generators.<br/>
+        Since the original implementation of Fernet is in Python, QShield calls its method "Fernet-like Encryption" because it is built in a different language (javascript), and uses additional safety checks to make it even more robust.
+        </p>
+        <p><a>Decoy-based Encryption:</a> This is a unique implementation, specially created in-house by the QShield cryptographers. It involves generating a key, and using it as an operand in a formula, instead of directly giving it to the client for end usage. This ensures that the public keys cannot be bulk generated and tried with different testing datasets to "guess" the private key. The exact algorithm and implementation is black boxed to ensure that malicious parties can't break past this additional layer of security.</p>
+    </section>
+
+    <footer>
+        <p>Dark Sun Labs &copy; 2025</p>
+    </footer>
+    <script>
+        document.getElementById("mobile-menu").addEventListener("click", function () {
+            document.querySelector(".nav-center").classList.toggle("nav-active");
+        });
+    </script>
+    <script src="main.js"></script>
+</body>
+</html>
