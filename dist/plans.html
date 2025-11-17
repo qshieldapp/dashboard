@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QShield - PLANS</title>
+    <link rel="shortcut icon" href="img/logo.png">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">QShield</div>
+            <div class="menu-toggle" id="mobile-menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul class="nav-center">
+                <li><a href="./">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="docs.html">Docs</a></li>
+                <li><a href="faqs.html">FAQ</a></li>
+                <li><a href="plans.html" class="btn">Get Started</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="content">
+        <h1>Create Account</h1>
+    <input type="password" id="create-master-password" placeholder="Master Password" style="width:300px;height:40px;margin-bottom:5px"> <br/>
+    <input type="text" id="secret-phrase" placeholder="Secret Recovery Phrase" style="width:300px;height:40px;margin-bottom:5px"><br/>
+    <button onclick="createAccount()" style="width: 100px;height: 40px">Create Account</button>
+
+    </section>
+    <section class="content">
+        <h1>Instructions</h1>
+        <p>To create a QShield account, you need a Master Password and a Secret Phrase. The Secret Phrase is important in case you need to delete your account. The Master Password is any sequence of text characters without space that will be used to generate your Public and Private Keys. Please remember, we do NOT store this anywhere and so, if you lose this, your encrypted data on QShield can NOT be decrypted by anyone, including QShield itself. Therefore, we recommend that you store this Master Password safely on a piece of paper.</p>
+        <p>Please note that you still need to get your API Key activated by filling this <a href="https://form.jotform.com/253201463918051" target="_blank">form</a> section.</p>
+    </section>
+
+    <footer>
+        <p>Dark Sun Labs &copy; 2025</p>
+    </footer>
+    <script>
+        document.getElementById("mobile-menu").addEventListener("click", function () {
+            document.querySelector(".nav-center").classList.toggle("nav-active");
+        });
+    </script>
+    <script src="main.js"></script>
+</body>
+</html>
