@@ -165,6 +165,13 @@ async function createAccountF(){
     const sp = document.getElementById('sp').value;
     const res = await createAccount(mp, sp);
     console.log(res);
+    document.getElementById('res_sct').style.display = 'block';
+    var msg = res.message;
+    if (msg.includes('successfully')){
+        msg = msg.concat('. API Key (please save): ').concat(res.api_key);
+    }
+    document.getElementById('result').textContent = msg;
+
 }
 window.createAccountF = createAccountF;
 
