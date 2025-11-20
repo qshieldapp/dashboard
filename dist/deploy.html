@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QShield - DEPLOY</title>
+    <link rel="shortcut icon" href="img/logo.png">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body onload="loadDeploy();">
+    <header>
+        <nav>
+            <div class="logo">QShield</div>
+            <div class="menu-toggle" id="mobile-menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul class="nav-center">
+                <li><a href="./">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="docs.html">Docs</a></li>
+                <li><a href="faqs.html">FAQ</a></li>
+                <li><a onclick="connectOrDisconnect();" class="btn" id="login-status">Login</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="content">
+        <div class="hx">Which Type of Contract?</div>
+    <button onclick="deployF1()" style="width: 200px;height: 40px">30 Place Leaderboard</button>
+    <button onclick="deployF2()" style="width: 200px;height: 40px">50 Place Leaderboard</button>
+
+    </section>
+
+    <section class="content" id="res_sct2" style='display:none;'>
+        <h1>System Message</h1>
+        <p id="result"></p>
+
+    </section>
+
+
+    <section class="content">
+        <h1>Instructions</h1>
+        <p>QShield is deploying the smart contract for you. There are two settings to choose from: Leaderboard has top 30 places, and leaderboard with top 50 places stored. You can choose either for your game. Lesser places stored makes it cheaper, but more places stored make it look more detailed.</p>
+        <p>Please note that you need to be logged in for this action, since the Smart Contract deployer will still be you. Smart Contract deployments require payment of Gas Fee to the network.</p>
+    </section>
+
+    <footer>
+        <p>Dark Sun Labs &copy; 2025</p>
+    </footer>
+    <script>
+        document.getElementById("mobile-menu").addEventListener("click", function () {
+            document.querySelector(".nav-center").classList.toggle("nav-active");
+        });
+    </script>
+    <script src="main.js"></script>
+</body>
+</html>

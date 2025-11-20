@@ -2,6 +2,9 @@ import { MlKem1024 } from 'crystals-kyber-js';
 import { encode, decode } from 'base64-arraybuffer';
 import ChaCha20 from 'js-chacha20';
 import { Buffer } from 'buffer';
+import detectEthereumProvider from "@metamask/detect-provider";
+import Web3 from "web3";
+import * as ethers from "ethers";
 
 // === CONFIG ===
 const API_BASE_URL = 'http://localhost:5000/api'; // Update if needed
@@ -185,3 +188,128 @@ async function testEncryptDecrypt(){
     console.log(res2);
 }
 window.testEncryptDecrypt = testEncryptDecrypt;
+
+
+async function getSignF(){
+  const ak = document.getElementById('ak').value;
+  const response = await fetch(`${API_BASE_URL}/qshield/sign`, {
+    method: 'POST',
+    headers: { 'api_key': ak, 'Content-Type': 'application/json'},
+    body: JSON.stringify({
+      data: { playerAddress: '0x8dc2f551c50F95BF9065C3cb3620611Ce97307F8', identifier: "alice.eth", score: 999 }
+    }),
+  });
+  const { score, nonce, v, r, s } = await response.json();
+  console.log(s);
+}
+window.getSignF = getSignF;
+
+async function deployF1(){
+
+}
+window.deployF1 = deployF1;
+
+async function deployF2(){
+
+}
+window.deployF2 = deployF2;
+
+async function loadDeploy(){
+  const acc_cur = localStorage.getItem("acc") || "";
+        if (acc_cur != "" && acc_cur != null){
+            document.getElementById("login-status").textContent = (acc_cur.toString().slice(0,8)).concat('..(Logout)');
+        }
+}
+window.loadDeploy = loadDeploy;
+
+// metamask
+
+async function connectOrDisconnect() {
+    const acc_cur = localStorage.getItem("acc") || "";
+    console.log(acc_cur);
+    if (acc_cur != "" && acc_cur != null){
+        localStorage.setItem("acc","");
+        document.getElementById("login-status").textContent = "Login";
+        return;
+    }
+
+    var chainId = 13337;
+    var cid = '0x3419';
+    var chain = 'Beam Testnet';
+    var name = 'Beam Testnet';
+    var symbol = 'BEAM';
+    var rpc = "https://build.onbeam.com/rpc/testnet";
+
+    const provider = await detectEthereumProvider()
+    console.log(window.ethereum);
+    if (provider && provider === window.ethereum) {
+        console.log("MetaMask is available!");
+
+        console.log(window.ethereum.networkVersion);
+        if (window.ethereum.networkVersion !== chainId) {
+            try {
+                await window.ethereum.request({
+                    method: 'wallet_switchEthereumChain',
+                    params: [{ chainId: cid }]
+                });
+                console.log("changed to ".concat(name).concat(" successfully"));
+
+            } catch (err) {
+                console.log(err);
+                // This error code indicates that the chain has not been added to MetaMask
+                if (err.code === 4902) {
+                    console.log("please add ".concat(name).concat(" as a network"));
+                        await window.ethereum.request({
+                            method: 'wallet_addEthereumChain',
+                            params: [
+                                {
+                                    chainName: chain,
+                                    chainId: cid,
+                                    nativeCurrency: { name: name, decimals: 18, symbol: symbol },
+                                    rpcUrls: [rpc]
+                                }
+                            ]
+                        });
+                }
+                else {
+                    console.log(err);
+                }
+            }
+        }
+        await startApp(provider);
+    } else {
+        console.log("Please install MetaMask!")
+    }
+
+
+
+}
+window.connectOrDisconnect = connectOrDisconnect;
+
+
+async function startApp(provider) {
+  if (provider !== window.ethereum) {
+    console.error("Do you have multiple wallets installed?")
+  }
+  else {
+    const accounts = await window.ethereum
+    .request({ method: "eth_requestAccounts" })
+    .catch((err) => {
+      if (err.code === 4001) {
+        console.log("Please connect to MetaMask.")
+      } else {
+        console.error(err)
+      }
+    })
+    console.log("hi");
+  const account = accounts[0];
+  var web3 = new Web3(window.ethereum);
+  const bal = await web3.eth.getBalance(account);
+  //console.log("hi");
+  console.log(bal);
+  console.log(account);
+  localStorage.setItem("acc",account.toString());
+  document.getElementById("login-status").textContent = (account.toString().slice(0,8)).concat('..(Logout)');
+
+  }
+}

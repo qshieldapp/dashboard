@@ -111,6 +111,15 @@ nav ul li a:hover, nav ul li a.active {
     padding: 0.75rem 2rem;
 }
 
+.hx {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    color: #00ff88;
+    text-shadow: 0 0 10px rgba(0, 255, 136, 0.5);
+}
+
+
+
 .quantum-animation {
     position: absolute;
     width: 100%;
