@@ -9,8 +9,8 @@ import artifact30 from "./QshieldLeaderboard.json";
 import artifact50 from "./QshieldLeaderboard2.json";
 
 // === CONFIG ===
-const API_BASE_URL = 'http://localhost:5000/api'; // Update if needed
-//const API_BASE_URL = 'https://quantumsure.onrender.com/api';
+//const API_BASE_URL = 'http://localhost:5000/api'; // Update if needed
+const API_BASE_URL = 'https://quantumsure.onrender.com/api';
 
 // === CRYPTO HELPERS ===
 function randomBytes(length) {
