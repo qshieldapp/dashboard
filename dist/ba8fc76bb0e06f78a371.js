@@ -165,25 +165,10 @@ async function createDecrypted(apiKey, encrypted_text, masterPassword) {
 }
 
 
-async function png(){
-  try {
-    const res = await fetch(`${API_BASE_URL}/intuser/ping`, {
-      method: 'GET'
-    });
-    //const { public_key } = await res.json();
-    console.log("ping success");
-  }
-  catch (err){
-    console.log("ping failed");
-  }
-
-}
-window.png = png;
-
 async function createAccountF(){
     const mp = document.getElementById('mp').value;
     const sp = document.getElementById('sp').value;
-    const res = await createAccount(sp, mp);
+    const res = await createAccount(mp, sp);
     console.log(res);
     document.getElementById('res_sct').style.display = 'block';
     var msg = res.message;
