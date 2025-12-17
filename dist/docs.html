@@ -28,7 +28,7 @@
 
     <section class="content">
         <h1>QShield Documentation</h1>
-        <p>Get started with our API and integration guides. Explore our comprehensive resources to implement quantum-resistant cryptography in your Game smart contracts.</p>
+        <p>Get started with our API and integration guides. Explore our comprehensive resources to implement quantum-resistant cryptography in your smart contracts.</p>
         <ul>
             <li><a onclick="location.href='#integration'">Integration Guide</a></li>
             <li><a onclick="location.href='#bestpractices'">Best Security Practices</a></li>
@@ -42,7 +42,7 @@
         <div style="font-size: 1.4em; color: #00ff88">Registering Your Account</div>
         <p>Go to the form and fill it up with the EXACT details asked and press send. We usually get back to you within 3 days.</p>
         <div style="font-size: 1.4em; color: #00ff88">Have a Compatible Smart Contract</div>
-        <p>If you store user scores in your Smart Contract as a mapping that is (address => uint), add a similar one for (string => uint). This is what we will have the users populate while submitting their scores. We also have an option to help you <a href="deploy.html" style="cursor:pointer;">deploy our recommended smart contract</a>.</p>
+        <p>For example, if you store user scores in your Smart Contract as a mapping that is (address => uint), add a similar one for (string => uint). This is what we will have the users populate while submitting their scores. We also have an option to help you <a href="deploy.html" style="cursor:pointer;">deploy our recommended smart contract</a>. There are similar structures for the deSci and Messaging smart contracts.</p>
         <div style="font-size: 1.4em; color: #00ff88">Add to Your Frontend</div>
         <p>Please make sure you store and retrieve your API Key and Master Password for this securely.
             <br/> Install the official qshield node library with "npm install qshield-js"
@@ -52,7 +52,7 @@
         <p>Once it's time to declare a winner, please use our decrypt function for any candidate to reveal if the score entry is authentic.</p>
 
         <div style="font-size: 1.8em; color: #00ff88" id="bestpractices">Best Security Practices</div>
-        <p>Please DO NOT share your master password, api key, or other details with anyone, because that would allow them to delete your account, and reverse engineer your encryption giving them the ability to create entries that align with your code without actually playing your game and registering "authentic" scores.</p>
+        <p>Please DO NOT share your master password, api key, or other details with anyone, because that would allow them to delete your account, and reverse engineer your encryption giving them the ability to record ANY entry, for example, entries that align with your Game Smart Contract code without actually playing your game and registering "authentic" scores.</p>
 
         <div style="font-size: 1.8em; color: #00ff88" id="tech">QShield Encryption at a Glance</div>
         <p>QShield using multiple encryption algorithms, and decoy mechanics to ensure the safety of your data, and its resistance to hacking and unauthorized access, even when pitted against Quantum Computers. The technology involves Kyber1024, Fernet-like, and decoy based encryption.</p>

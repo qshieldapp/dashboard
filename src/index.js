@@ -7,6 +7,8 @@ import Web3 from "web3";
 import * as ethers from "ethers";
 import artifact30 from "./QshieldLeaderboard.json";
 import artifact50 from "./QshieldLeaderboard2.json";
+import artifact_desci from "./QshieldDescivault.json";
+import artifact_messenger from "./QshieldMessenger.json";
 
 // === CONFIG ===
 //const API_BASE_URL = 'http://localhost:5000/api'; // Update if needed
@@ -360,6 +362,148 @@ async function deployF2(){
 }
 window.deployF2 = deployF2;
 
+async function deployF3(){
+  const acc_cur = localStorage.getItem("acc") || "";
+    //console.log(acc_cur);
+    if (acc_cur == "" || acc_cur == null){
+        alert('You need to be logged in with your Beam wallet for this function.')
+        return;
+  }
+
+  var chainId = 13337;
+  var cid = '0x3419';
+  var chain = 'Beam Testnet';
+  var name = 'Beam Testnet';
+  var symbol = 'BEAM';
+  var rpc = "https://build.onbeam.com/rpc/testnet";
+
+  if (window.ethereum.networkVersion !== chainId) {
+      try {
+          await window.ethereum.request({
+              method: 'wallet_switchEthereumChain',
+              params: [{ chainId: cid }]
+          });
+          console.log("changed to ".concat(name).concat(" successfully"));
+
+      } catch (err) {
+          console.log(err);
+          // This error code indicates that the chain has not been added to MetaMask
+          if (err.code === 4902) {
+              console.log("please add ".concat(name).concat(" as a network"));
+                  await window.ethereum.request({
+                      method: 'wallet_addEthereumChain',
+                      params: [
+                          {
+                              chainName: chain,
+                              chainId: cid,
+                              nativeCurrency: { name: name, decimals: 18, symbol: symbol },
+                              rpcUrls: [rpc]
+                          }
+                      ]
+                  });
+          }
+          else {
+              console.log(err);
+          }
+      }
+  }
+  const abi = artifact_desci;
+  var bytecode = abi.data.bytecode.object;
+  bytecode = bytecode.startsWith('0x') ? bytecode : '0x' + bytecode;
+  const provider = new ethers.BrowserProvider(window.ethereum);
+  await provider.send("eth_requestAccounts", []);
+  const signer = await provider.getSigner();
+
+  const factory = new ethers.ContractFactory(abi.abi, bytecode, signer);
+  const contract = await factory.deploy('0x0D6a25f8dBfDE877CedA48C73EB9CEB3F39bD238');
+  await contract.waitForDeployment();
+  console.log(contract.target);
+  //console.log(contract.target);
+  document.getElementById('res_sct2').style.display = 'block';
+  var msg = "";
+  if (contract.target){
+    msg = "Your Smart Contract is deployed at address " + (contract.target) + '. Please check out the transaction hash on your wallet and use the Explorer for details.';
+  }
+
+    if (msg == ""){
+        msg = "Smart Contract deployment failed. Please check your wallet logs for details.";
+    }
+    document.getElementById('result2').textContent = msg;
+}
+window.deployF3 = deployF3;
+
+
+async function deployF4(){
+  const acc_cur = localStorage.getItem("acc") || "";
+    //console.log(acc_cur);
+    if (acc_cur == "" || acc_cur == null){
+        alert('You need to be logged in with your Beam wallet for this function.')
+        return;
+  }
+
+  var chainId = 13337;
+  var cid = '0x3419';
+  var chain = 'Beam Testnet';
+  var name = 'Beam Testnet';
+  var symbol = 'BEAM';
+  var rpc = "https://build.onbeam.com/rpc/testnet";
+
+  if (window.ethereum.networkVersion !== chainId) {
+      try {
+          await window.ethereum.request({
+              method: 'wallet_switchEthereumChain',
+              params: [{ chainId: cid }]
+          });
+          console.log("changed to ".concat(name).concat(" successfully"));
+
+      } catch (err) {
+          console.log(err);
+          // This error code indicates that the chain has not been added to MetaMask
+          if (err.code === 4902) {
+              console.log("please add ".concat(name).concat(" as a network"));
+                  await window.ethereum.request({
+                      method: 'wallet_addEthereumChain',
+                      params: [
+                          {
+                              chainName: chain,
+                              chainId: cid,
+                              nativeCurrency: { name: name, decimals: 18, symbol: symbol },
+                              rpcUrls: [rpc]
+                          }
+                      ]
+                  });
+          }
+          else {
+              console.log(err);
+          }
+      }
+  }
+  const abi = artifact_messenger;
+  var bytecode = abi.data.bytecode.object;
+  bytecode = bytecode.startsWith('0x') ? bytecode : '0x' + bytecode;
+  const provider = new ethers.BrowserProvider(window.ethereum);
+  await provider.send("eth_requestAccounts", []);
+  const signer = await provider.getSigner();
+
+  const factory = new ethers.ContractFactory(abi.abi, bytecode, signer);
+  const contract = await factory.deploy('0x0D6a25f8dBfDE877CedA48C73EB9CEB3F39bD238');
+  await contract.waitForDeployment();
+  console.log(contract.target);
+  //console.log(contract.target);
+  document.getElementById('res_sct2').style.display = 'block';
+  var msg = "";
+  if (contract.target){
+    msg = "Your Smart Contract is deployed at address " + (contract.target) + '. Please check out the transaction hash on your wallet and use the Explorer for details.';
+  }
+
+    if (msg == ""){
+        msg = "Smart Contract deployment failed. Please check your wallet logs for details.";
+    }
+    document.getElementById('result2').textContent = msg;
+}
+window.deployF4 = deployF4;
+
+
 async function loadDeploy(){
   const acc_cur = localStorage.getItem("acc") || "";
         if (acc_cur != "" && acc_cur != null){
@@ -459,3 +603,9 @@ async function startApp(provider) {
 
   }
 }
+
+
+async function toPlan(){
+  window.location.href = './plans.html';
+}
+window.toPlan = toPlan;

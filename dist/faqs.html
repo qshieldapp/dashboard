@@ -30,7 +30,7 @@
         <h1>Frequently Asked Questions</h1>
         <div class="faq-item">
             <h3>What exactly is QSield?</h3>
-            <p>QShield is an infrastructure project built to support trustless score entry for Web 3 games. Focusing primarily on the Beam Protocol, QShield converts the address of the user calling the SubmitScore() function to a Quantum Resistant code so that improper scores (for example those entered by malicious users who directly call the smart contract) can be flagged since the codes they would carry would not meet the cipher standards set by QShield intrinsically.</p>
+            <p>QShield is an infrastructure project built to support trustless but encrypted entries for your Smart Contracts. Focusing primarily on the Beam Protocol, QShield converts the address of the user calling the Submit functions to a Quantum Resistant code so that improper entries (for example those entered by malicious users who directly call the smart contract) can be flagged since the codes they would carry would not meet the cipher standards set by QShield intrinsically.</p>
         </div>
         <div class="faq-item">
             <h3>What are quantum computers anyway?</h3>
@@ -45,8 +45,12 @@
             <p>QShield uses NIST-approved post-quantum algorithms and real-time monitoring to ensure robust security. Taking the threat of Quantum Computing very seriously, QuantumSure uses multilayered algorithms, integrating Fernet-like cryptography, Kyber 1024, and decoy keys to ensure the client data is ready to stand to the test of hacking and malicious actors in a post-quantum world. This makes it functionally impossible for unauthorized parties to crack the code pattern for score submission for your game.</p>
         </div>
         <div class="faq-item">
-            <h3>Can I integrate QShield with my game?</h3>
-            <p>Please got to the Get Started section and generate your API Key and other details. Next, fill out the form to apply register your API Key and site url so that we can flag all other request sources for extra protection. We usually get back within 3 working days.</p>
+            <h3>Can I integrate QShield with my dapp?</h3>
+            <p>Please go to the Get Started section and generate your API Key and other details. Next, fill out the form to apply register your API Key and site url so that we can flag all other request sources for extra protection. We usually get back within 3 working days.</p>
+        </div>
+        <div class="faq-item">
+            <h3>What kind of Dapps is QShield suited for?</h3>
+            <p>QShield works for any type of data that you don't want people to be able to enter arbitrarily, like game scores, deSci entries, onchain messages, and so on. We ever have some of these factory contracts readily available for you in the <a href="./deploy.html" style="cursor:pointer;">deploy</a> section.</p>
         </div>
         <div class="faq-item">
             <h3>Do I need to share my sensitive data for this?</h3>
@@ -54,7 +58,7 @@
         </div>
         <div class="faq-item">
             <h3>What format of requests does QShield expect?</h3>
-            <p>QShield requires the address of the one submitting the score. That's it! However, this means that your Smart Contract must have a mapping that can accept these codified values and map it to the score. The exact tutorial can be viewed in <a href="docs.html">documentation</a>.</p>
+            <p>QShield requires the address of the one submitting the score. That's it! However, this means that your Smart Contract must have a mapping that can accept these codified values and map it to the score, message, or any other type of key. The exact tutorial can be viewed in <a href="docs.html">documentation</a>.</p>
         </div>
         <div class="faq-item">
             <h3>What is the pricing like?</h3>
