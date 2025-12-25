@@ -27,11 +27,16 @@
     </header>
 
     <section class="content">
+    <div class="hx">Choose Chain</div>
+    <div style="display:flex; gap: 20px;">
+    <div id="c0" style="background-color: #0a0a1a; height: 50px; margin-bottom: 5px;cursor: pointer;" onclick="chainIs(0);"><img src="./img/beamlogo.png" width=50></div>
+    <div id="c1" style="background-color: #0a0a1a; height: 50px; margin-bottom: 5px; cursor: pointer;" onclick="chainIs(1);"><img src = "./img/abeylogo.png" width=50></div>
+    </div><br/>
         <div class="hx">Which Type of Contract?</div>
     <button onclick="deployF1()" style="width: 200px;height: 40px;margin-bottom:5px;">30 Place Leaderboard</button>
     <button onclick="deployF2()" style="width: 200px;height: 40px;margin-bottom:5px;">50 Place Leaderboard</button><br/>
-    <button onclick="deployF3()" style="width: 200px;height: 40px">DeSci Smart Contract</button>
-    <button onclick="deployF4()" style="width: 200px;height: 40px">Messaging Smart Contract</button>
+    <button onclick="deployF3()" style="width: 200px;height: 40px; margin-bottom: 5px;">DeSci Smart Contract</button>
+    <button onclick="deployF4()" style="width: 200px;height: 40px; margin-bottom: 5px;">Messaging Smart Contract</button>
 
     </section>
 
@@ -44,7 +49,7 @@
 
     <section class="content">
         <h1>Instructions</h1>
-        <p>QShield is deploying the smart contract for you. There are two settings to choose from: Leaderboard has top 30 places, and leaderboard with top 50 places stored. You can choose either for your game. Lesser places stored makes it cheaper, but more places stored make it look more detailed.</p>
+        <p>QShield is deploying the smart contract for you. For the Game Smart Contract, there are two settings to choose from: Leaderboard has top 30 places, and leaderboard with top 50 places stored. You can choose either for your game. Lesser places stored makes it cheaper, but more places stored make it look more detailed. The deSci and Messenger Smart Contracts are also available now. Please pick the right smart contract for your dapp, or create a custom one similar to the example given in the docs.</p>
         <p>Please note that you need to be logged in for this action, since the Smart Contract deployer will still be you. Smart Contract deployments require payment of Gas Fee to the network, and are subject to network traffic and dynamic cryptocurrency prices.</p>
     </section>
 

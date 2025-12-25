@@ -14,6 +14,11 @@ import artifact_messenger from "./QshieldMessenger.json";
 //const API_BASE_URL = 'http://localhost:5000/api'; // Update if needed
 const API_BASE_URL = 'https://quantumsure.onrender.com/api';
 
+
+let chains = [['Beam', '4337', '0x10f1', 'Beam Mainnet', 'Beam Mainnet', 'BEAM', 'https://build.onbeam.com/rpc'], ['Abey', '179', '0xb3', 'Abey Mainnet', 'Abey Mainnet', 'ABEY', 'https://rpc.abeychain.com']];
+
+let chainChoice = 0;
+
 // === CRYPTO HELPERS ===
 function randomBytes(length) {
   const array = new Uint8Array(length);
@@ -231,12 +236,12 @@ async function deployF1(){
         return;
   }
 
-  var chainId = 13337;
-  var cid = '0x3419';
-  var chain = 'Beam Testnet';
-  var name = 'Beam Testnet';
-  var symbol = 'BEAM';
-  var rpc = "https://build.onbeam.com/rpc/testnet";
+  var chainId = parseInt(chains[chainChoice][1]);
+  var cid = chains[chainChoice][2];
+  var chain = chains[chainChoice][3];
+  var name = chains[chainChoice][4];
+  var symbol = chains[chainChoice][5];
+  var rpc = chains[chainChoice][6];
 
   if (window.ethereum.networkVersion !== chainId) {
       try {
@@ -300,12 +305,12 @@ async function deployF2(){
         return;
   }
 
-  var chainId = 13337;
-  var cid = '0x3419';
-  var chain = 'Beam Testnet';
-  var name = 'Beam Testnet';
-  var symbol = 'BEAM';
-  var rpc = "https://build.onbeam.com/rpc/testnet";
+  var chainId = parseInt(chains[chainChoice][1]);
+  var cid = chains[chainChoice][2];
+  var chain = chains[chainChoice][3];
+  var name = chains[chainChoice][4];
+  var symbol = chains[chainChoice][5];
+  var rpc = chains[chainChoice][6];
 
   if (window.ethereum.networkVersion !== chainId) {
       try {
@@ -370,12 +375,12 @@ async function deployF3(){
         return;
   }
 
-  var chainId = 13337;
-  var cid = '0x3419';
-  var chain = 'Beam Testnet';
-  var name = 'Beam Testnet';
-  var symbol = 'BEAM';
-  var rpc = "https://build.onbeam.com/rpc/testnet";
+  var chainId = chains[chainChoice][1].toString();
+  var cid = chains[chainChoice][2];
+  var chain = chains[chainChoice][3];
+  var name = chains[chainChoice][4];
+  var symbol = chains[chainChoice][5];
+  var rpc = chains[chainChoice][6];
 
   if (window.ethereum.networkVersion !== chainId) {
       try {
@@ -441,12 +446,12 @@ async function deployF4(){
         return;
   }
 
-  var chainId = 13337;
-  var cid = '0x3419';
-  var chain = 'Beam Testnet';
-  var name = 'Beam Testnet';
-  var symbol = 'BEAM';
-  var rpc = "https://build.onbeam.com/rpc/testnet";
+  var chainId = chains[chainChoice][1].toString();
+  var cid = chains[chainChoice][2];
+  var chain = chains[chainChoice][3];
+  var name = chains[chainChoice][4];
+  var symbol = chains[chainChoice][5];
+  var rpc = chains[chainChoice][6];
 
   if (window.ethereum.networkVersion !== chainId) {
       try {
@@ -509,6 +514,17 @@ async function loadDeploy(){
         if (acc_cur != "" && acc_cur != null){
             document.getElementById("login-status").textContent = (acc_cur.toString().slice(0,8)).concat('..(Logout)');
         }
+
+  if (chainChoice == 1){
+    document.getElementById('c1').style.backgroundColor = "#222222";
+    document.getElementById('c1').style.padding = "5px";
+    document.getElementById('c1').style.height = "60px";
+  }
+  else {
+    document.getElementById('c0').style.backgroundColor = "#222222";
+    document.getElementById('c0').style.padding = "5px";
+    document.getElementById('c0').style.height = "60px";
+  }
 }
 window.loadDeploy = loadDeploy;
 
@@ -523,12 +539,13 @@ async function connectOrDisconnect() {
         return;
     }
 
-    var chainId = 13337;
-    var cid = '0x3419';
-    var chain = 'Beam Testnet';
-    var name = 'Beam Testnet';
-    var symbol = 'BEAM';
-    var rpc = "https://build.onbeam.com/rpc/testnet";
+    console.log(chains);
+    var chainId = chains[chainChoice][1].toString();
+    var cid = chains[chainChoice][2];
+    var chain = chains[chainChoice][3];
+    var name = chains[chainChoice][4];
+    var symbol = chains[chainChoice][5];
+    var rpc = chains[chainChoice][6];
 
     const provider = await detectEthereumProvider()
     console.log(window.ethereum);
@@ -603,6 +620,28 @@ async function startApp(provider) {
 
   }
 }
+
+async function chainIs(k){
+  console.log('hi');
+  chainChoice = k;
+  if (k == 1){
+    document.getElementById('c1').style.backgroundColor = "#222222";
+    document.getElementById('c1').style.padding = "5px";
+    document.getElementById('c1').style.height = "60px";
+    document.getElementById('c0').style.backgroundColor = "#0a0a1a";
+    document.getElementById('c0').style.padding = "0px";
+    document.getElementById('c0').style.height = "50px";
+  }
+  else {
+    document.getElementById('c0').style.backgroundColor = "#222222";
+    document.getElementById('c0').style.padding = "5px";
+    document.getElementById('c0').style.height = "60px";
+    document.getElementById('c1').style.backgroundColor = "#0a0a1a";
+    document.getElementById('c1').style.padding = "0px";
+    document.getElementById('c1').style.height = "50px";
+  }
+}
+window.chainIs = chainIs;
 
 
 async function toPlan(){
