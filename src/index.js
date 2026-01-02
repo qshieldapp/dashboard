@@ -9,6 +9,10 @@ import artifact30 from "./QshieldLeaderboard.json";
 import artifact50 from "./QshieldLeaderboard2.json";
 import artifact_desci from "./QshieldDescivault.json";
 import artifact_messenger from "./QshieldMessenger.json";
+import artifact30_a from "./QshieldLeaderboardAbey.json";
+import artifact50_a from "./QshieldLeaderboard2Abey.json";
+import artifact_desci_a from "./QshieldDescivaultAbey.json";
+import artifact_messenger_a from "./QshieldMessengerAbey.json";
 
 // === CONFIG ===
 //const API_BASE_URL = 'http://localhost:5000/api'; // Update if needed
@@ -16,6 +20,9 @@ const API_BASE_URL = 'https://quantumsure.onrender.com/api';
 
 
 let chains = [['Beam', '4337', '0x10f1', 'Beam Mainnet', 'Beam Mainnet', 'BEAM', 'https://build.onbeam.com/rpc'], ['Abey', '179', '0xb3', 'Abey Mainnet', 'Abey Mainnet', 'ABEY', 'https://rpc.abeychain.com']];
+
+
+//let chains = [['Beam', '13337', '0x3419', 'Beam Testnet', 'Beam Testnet', 'BEAM', 'https://build.onbeam.com/rpc/testnet'], ['Abey', '178', '0xb2', 'Abey Testnet', 'Abey Testnet', 'tABEY', 'https://testrpc.abeychain.com']];
 
 let chainChoice = 0;
 
@@ -232,7 +239,7 @@ async function deployF1(){
   const acc_cur = localStorage.getItem("acc") || "";
     //console.log(acc_cur);
     if (acc_cur == "" || acc_cur == null){
-        alert('You need to be logged in with your Beam wallet for this function.')
+        alert('You need to be logged in with your metamask wallet for this function.')
         return;
   }
 
@@ -273,7 +280,13 @@ async function deployF1(){
           }
       }
   }
-  const abi = artifact30;
+  let abi;
+  if (chainChoice == 0){
+    abi = artifact30;
+  }
+  else {
+    abi = artifact30_a
+  }
   var bytecode = abi.data.bytecode.object;
   bytecode = bytecode.startsWith('0x') ? bytecode : '0x' + bytecode;
   const provider = new ethers.BrowserProvider(window.ethereum);
@@ -301,7 +314,7 @@ async function deployF2(){
   const acc_cur = localStorage.getItem("acc") || "";
     //console.log(acc_cur);
     if (acc_cur == "" || acc_cur == null){
-        alert('You need to be logged in with your Beam wallet for this function.')
+        alert('You need to be logged in with your metamask wallet for this function.')
         return;
   }
 
@@ -342,7 +355,15 @@ async function deployF2(){
           }
       }
   }
-  const abi = artifact50;
+
+  let abi;
+  if (chainChoice == 0){
+    abi = artifact50;
+  }
+  else {
+    abi = artifact50_a
+  }
+
   var bytecode = abi.data.bytecode.object;
   bytecode = bytecode.startsWith('0x') ? bytecode : '0x' + bytecode;
   const provider = new ethers.BrowserProvider(window.ethereum);
@@ -371,7 +392,7 @@ async function deployF3(){
   const acc_cur = localStorage.getItem("acc") || "";
     //console.log(acc_cur);
     if (acc_cur == "" || acc_cur == null){
-        alert('You need to be logged in with your Beam wallet for this function.')
+        alert('You need to be logged in with your metamask wallet for this function.')
         return;
   }
 
@@ -412,7 +433,15 @@ async function deployF3(){
           }
       }
   }
-  const abi = artifact_desci;
+
+  let abi;
+  if (chainChoice == 0){
+    abi = artifact_desci;
+  }
+  else {
+    abi = artifact_desci_a
+  }
+
   var bytecode = abi.data.bytecode.object;
   bytecode = bytecode.startsWith('0x') ? bytecode : '0x' + bytecode;
   const provider = new ethers.BrowserProvider(window.ethereum);
@@ -442,7 +471,7 @@ async function deployF4(){
   const acc_cur = localStorage.getItem("acc") || "";
     //console.log(acc_cur);
     if (acc_cur == "" || acc_cur == null){
-        alert('You need to be logged in with your Beam wallet for this function.')
+        alert('You need to be logged in with your metamask wallet for this function.')
         return;
   }
 
@@ -483,7 +512,15 @@ async function deployF4(){
           }
       }
   }
-  const abi = artifact_messenger;
+
+  let abi;
+  if (chainChoice == 0){
+    abi = artifact_messenger;
+  }
+  else {
+    abi = artifact_messenger_a;
+  }
+
   var bytecode = abi.data.bytecode.object;
   bytecode = bytecode.startsWith('0x') ? bytecode : '0x' + bytecode;
   const provider = new ethers.BrowserProvider(window.ethereum);
